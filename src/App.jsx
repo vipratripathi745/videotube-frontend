@@ -1,5 +1,5 @@
 import Navbar from "./components/layout/Navbar";
-import Sidebar from "./components/sidebar/Sidebar";
+import Sidebar from "./components/layout/Sidebar";
 import AppRoutes from "./routes/AppRoutes";
 import useAuthLoader from "./hooks/useAuthLoader";
 
@@ -13,7 +13,9 @@ function App() {
             <div className="flex">
                 <Sidebar />
 
-                <AppRoutes />
+                <div className="flex-1 overflow-auto">
+                    <AppRoutes />
+                </div>
             </div>
         </div>
     );

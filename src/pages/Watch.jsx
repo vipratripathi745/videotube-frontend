@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import CommentList from "../components/comments/CommentList";
-
+import LikeButton from "../components/likes/LikeButton";
 import videoService from "../services/video.service";
+
 
 function Watch() {
     const { videoId } = useParams();
@@ -83,9 +84,10 @@ function Watch() {
 
                     <div className="flex gap-3">
 
-                        <button className="bg-zinc-800 px-4 py-2 rounded-full">
-                            👍 {video.views}
-                        </button>
+                        <LikeButton
+                            videoId={video._id}
+                            initialLikes={video.likesCount}
+                        />
 
                         <button className="bg-zinc-800 px-4 py-2 rounded-full">
                             Share

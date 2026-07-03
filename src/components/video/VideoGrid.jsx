@@ -11,6 +11,7 @@ function VideoGrid() {
                 const response = await videoService.getAllVideos();
 
                 if (response.success) {
+                    console.log("Videos:", response.data);
                     setVideos(response.data);
                 }
             } catch (error) {
