@@ -1,14 +1,31 @@
-import { Link } from "react-router-dom";
+import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { FiSearch, FiMenu } from "react-icons/fi";
 
 function Navbar() {
+    const [search, setSearch] = useState("");
+    const navigate = useNavigate();
+
+    const handleSearch = () => {
+        if (search.trim()) {
+            navigate(`/?query=${encodeURIComponent(search.trim())}`);
+        } else {
+            navigate("/");
+        }
+    };
+
+    const handleKeyDown = (e) => {
+        if (e.key === "Enter") {
+            handleSearch();
+        }
+    };
+
     return (
         <nav className="sticky top-0 z-50 bg-zinc-900 border-b border-zinc-800 px-6 py-3">
             <div className="flex items-center justify-between">
 
                 {/* Left */}
                 <div className="flex items-center gap-4">
-
                     <button className="text-2xl">
                         <FiMenu />
                     </button>
@@ -19,27 +36,32 @@ function Navbar() {
                     >
                         VideoTube
                     </Link>
-
                 </div>
 
                 {/* Center */}
-
                 <div className="hidden md:flex items-center w-1/2">
 
                     <input
                         type="text"
-                        placeholder="Search"
-                        className="w-full bg-zinc-800 rounded-l-full px-5 py-2 outline-none"
+                        placeholder="Search videos..."
+                        value={search}
+                        onChange={(e) =>
+                            setSearch(e.target.value)
+                        }
+                        onKeyDown={handleKeyDown}
+                        className="w-full bg-zinc-800 rounded-l-full px-5 py-2 outline-none text-white"
                     />
 
-                    <button className="bg-zinc-700 px-5 py-2 rounded-r-full">
+                    <button
+                        onClick={handleSearch}
+                        className="bg-zinc-700 hover:bg-zinc-600 px-5 py-2 rounded-r-full"
+                    >
                         <FiSearch />
                     </button>
 
                 </div>
 
                 {/* Right */}
-
                 <div className="flex items-center gap-4">
 
                     <img

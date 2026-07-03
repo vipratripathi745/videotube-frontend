@@ -2,16 +2,15 @@ import { useEffect, useState } from "react";
 import VideoCard from "./VideoCard";
 import videoService from "../../services/video.service";
 
-function VideoGrid() {
+function VideoGrid({ query = "" }) {
     const [videos, setVideos] = useState([]);
 
     useEffect(() => {
         const fetchVideos = async () => {
             try {
-                const response = await videoService.getAllVideos();
+                const response = await videoService.getAllVideos(query);
 
                 if (response.success) {
-                    console.log("Videos:", response.data);
                     setVideos(response.data);
                 }
             } catch (error) {
@@ -20,12 +19,12 @@ function VideoGrid() {
         };
 
         fetchVideos();
-    }, []);
+    }, [query]);
 
     if (videos.length === 0) {
         return (
             <div className="text-center text-white text-xl mt-10">
-                No videos available
+                No videos found
             </div>
         );
     }
