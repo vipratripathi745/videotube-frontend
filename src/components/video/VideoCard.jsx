@@ -8,17 +8,17 @@ function VideoCard({ video }) {
             onClick={() => navigate(`/watch/${video._id}`)}
             className="group cursor-pointer"
         >
-            <div className="overflow-hidden rounded-xl">
+            <div className="overflow-hidden rounded-2xl">
 
                 <img
                     src={video.thumbnail}
                     alt={video.title}
-                    className="w-full aspect-video object-cover transition-transform duration-300 group-hover:scale-105"
+                    className="w-full aspect-video object-cover transition duration-500 group-hover:scale-105"
                 />
 
             </div>
 
-            <div className="flex gap-3 mt-3">
+            <div className="flex gap-3 mt-4">
 
                 <img
                     src={
@@ -26,25 +26,22 @@ function VideoCard({ video }) {
                         "https://via.placeholder.com/40"
                     }
                     alt="avatar"
-                    className="w-10 h-10 rounded-full"
+                    className="w-11 h-11 rounded-full object-cover"
                 />
 
-                <div>
+                <div className="flex-1">
 
-                    <h2 className="text-white font-semibold line-clamp-2">
+                    <h2 className="text-white font-semibold leading-6 line-clamp-2">
                         {video.title}
                     </h2>
 
-                    <p className="text-gray-400 text-sm mt-1">
-                        {video.owner?.username ||
-                            "Unknown Channel"}
+                    <p className="text-gray-400 text-sm mt-2">
+                        {video.owner?.username}
                     </p>
 
                     <p className="text-gray-500 text-xs mt-1">
                         {video.views} views •{" "}
-                        {new Date(
-                            video.createdAt
-                        ).toLocaleDateString()}
+                        {new Date(video.createdAt).toLocaleDateString()}
                     </p>
 
                 </div>

@@ -47,8 +47,11 @@ function Watch() {
 
     if (!video) {
         return (
-            <div className="flex-1 flex justify-center items-center bg-black text-white">
-                Loading...
+            <div className="flex-1 flex items-center justify-center bg-zinc-950 text-white min-h-screen">
+                <div className="text-center">
+                    <div className="w-12 h-12 border-4 border-red-600 border-t-transparent rounded-full animate-spin mx-auto"></div>
+                    <p className="mt-4 text-gray-400">Loading video...</p>
+                </div>
             </div>
         );
     }
@@ -64,16 +67,16 @@ function Watch() {
                     <video
                         src={video.videoFile}
                         controls
-                        className="w-full rounded-2xl shadow-2xl bg-black"
+                        className="w-full rounded-2xl bg-black shadow-2xl border border-zinc-800"
                     />
 
                     {/* Title */}
-                    <h1 className="text-3xl font-bold mt-6">
+                    <h1 className="text-3xl lg:text-4xl font-bold leading-tight mt-6">
                         {video.title}
                     </h1>
 
                     {/* Channel Card */}
-                    <div className="bg-zinc-900 rounded-xl p-5 mt-6 flex justify-between items-center flex-wrap gap-4">
+                    <div className="bg-zinc-900 border border-zinc-800 rounded-2xl p-6 mt-6 flex justify-between items-center flex-wrap gap-6 shadow-lg">
 
                         <div className="flex items-center gap-4">
 
@@ -83,11 +86,11 @@ function Watch() {
                                     "https://via.placeholder.com/50"
                                 }
                                 alt="avatar"
-                                className="w-12 h-12 rounded-full"
+                                className="w-14 h-14 rounded-full object-cover border-2 border-zinc-700"
                             />
 
                             <div>
-                                <h2 className="font-semibold">
+                                <h2 className="text-lg font-semibold">
                                     {video.owner?.username || "Unknown Channel"}
                                 </h2>
 
@@ -109,11 +112,11 @@ function Watch() {
                                 initialLikes={video.likesCount}
                             />
 
-                            <button className="bg-zinc-800 hover:bg-zinc-700 px-4 py-2 rounded-full">
+                            <button className="bg-zinc-800 hover:bg-zinc-700 transition px-5 py-2 rounded-full font-medium">
                                 Share
                             </button>
 
-                            <button className="bg-zinc-800 hover:bg-zinc-700 px-4 py-2 rounded-full">
+                            <button className="bg-zinc-800 hover:bg-zinc-700 transition px-5 py-2 rounded-full font-medium">
                                 Save
                             </button>
 
@@ -123,7 +126,7 @@ function Watch() {
 
                     {/* Description */}
 
-                    <div className="bg-zinc-900 rounded-2xl mt-6 p-6">
+                    <div className="bg-zinc-900 border border-zinc-800 rounded-2xl mt-6 p-6 shadow-lg">
 
                         <p className="text-gray-400">
                             {video.views} views •{" "}
@@ -144,10 +147,10 @@ function Watch() {
 
                 {/* Right Side */}
 
-                <div className="hidden lg:block w-96">
+                <div className="hidden xl:block w-96 shrink-0">
 
-                    <h2 className="text-xl font-semibold mb-4">
-                        Recommended Videos
+                    <h2 className="text-2xl font-bold mb-5">
+                        Recommended
                     </h2>
 
                     <div className="space-y-4">
@@ -161,12 +164,12 @@ function Watch() {
                                 <Link
                                     key={item._id}
                                     to={`/watch/${item._id}`}
-                                    className="flex gap-3 hover:bg-zinc-900 rounded-lg p-2 transition"
+                                    className="flex gap-3 hover:bg-zinc-900 rounded-xl p-2 transition-all duration-300 hover:scale-[1.02]"
                                 >
                                     <img
                                         src={item.thumbnail}
                                         alt={item.title}
-                                        className="w-40 h-24 object-cover rounded-lg"
+                                        className="w-40 h-24 object-cover rounded-xl"
                                     />
 
                                     <div className="flex-1">

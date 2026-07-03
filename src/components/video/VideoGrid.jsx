@@ -23,14 +23,27 @@ function VideoGrid({ query = "" }) {
 
     if (videos.length === 0) {
         return (
-            <div className="text-center text-white text-xl mt-10">
-                No videos found
+            <div className="flex flex-col items-center justify-center py-24">
+
+                <div className="text-6xl mb-4">
+                    🎬
+                </div>
+
+                <h2 className="text-2xl text-white font-semibold">
+                    No Videos Found
+                </h2>
+
+                <p className="text-gray-400 mt-2">
+                    Upload your first video to get started.
+                </p>
+
             </div>
         );
     }
 
+
     return (
-        <div className="grid gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
             {videos.map((video) => (
                 <VideoCard
                     key={video._id}

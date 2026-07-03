@@ -1,6 +1,11 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { FiSearch, FiMenu } from "react-icons/fi";
+import {
+    FiSearch,
+    FiMenu,
+    FiUpload,
+    FiUser,
+} from "react-icons/fi";
 
 function Navbar() {
     const [search, setSearch] = useState("");
@@ -21,42 +26,42 @@ function Navbar() {
     };
 
     return (
-        <nav className="sticky top-0 z-50 bg-zinc-900 border-b border-zinc-800 px-6 py-3">
-            <div className="flex items-center justify-between">
+        <nav className="sticky top-0 z-50 bg-zinc-950 border-b border-zinc-800 backdrop-blur">
+            <div className="max-w-screen-2xl mx-auto h-16 px-6 flex items-center justify-between">
 
                 {/* Left */}
                 <div className="flex items-center gap-4">
-                    <button className="text-2xl">
+
+                    <button className="text-white text-2xl hover:text-red-500 transition">
                         <FiMenu />
                     </button>
 
                     <Link
                         to="/"
-                        className="text-2xl font-bold text-red-500"
+                        className="text-3xl font-extrabold text-red-600 tracking-tight"
                     >
                         VideoTube
                     </Link>
+
                 </div>
 
                 {/* Center */}
-                <div className="hidden md:flex items-center w-1/2">
+                <div className="hidden md:flex items-center w-full max-w-xl">
 
                     <input
                         type="text"
                         placeholder="Search videos..."
                         value={search}
-                        onChange={(e) =>
-                            setSearch(e.target.value)
-                        }
+                        onChange={(e) => setSearch(e.target.value)}
                         onKeyDown={handleKeyDown}
-                        className="w-full bg-zinc-800 rounded-l-full px-5 py-2 outline-none text-white"
+                        className="flex-1 bg-zinc-900 border border-zinc-700 px-5 py-2.5 rounded-l-full text-white outline-none focus:border-red-500"
                     />
 
                     <button
                         onClick={handleSearch}
-                        className="bg-zinc-700 hover:bg-zinc-600 px-5 py-2 rounded-r-full"
+                        className="bg-zinc-800 border border-l-0 border-zinc-700 px-5 py-[11px] rounded-r-full hover:bg-zinc-700 transition"
                     >
-                        <FiSearch />
+                        <FiSearch className="text-white text-lg" />
                     </button>
 
                 </div>
@@ -66,16 +71,20 @@ function Navbar() {
 
                     <Link
                         to="/upload"
-                        className="bg-red-600 hover:bg-red-700 px-4 py-2 rounded-lg text-white font-medium"
+                        className="flex items-center gap-2 bg-red-600 hover:bg-red-700 px-4 py-2 rounded-full text-white font-medium transition"
                     >
-                        Upload
+                        <FiUpload />
+                        <span className="hidden sm:inline">
+                            Upload
+                        </span>
                     </Link>
 
-                    <img
-                        src="https://via.placeholder.com/40"
-                        alt="avatar"
-                        className="w-10 h-10 rounded-full"
-                    />
+                    <Link
+                        to="/profile"
+                        className="w-11 h-11 rounded-full bg-zinc-800 hover:bg-zinc-700 flex items-center justify-center transition"
+                    >
+                        <FiUser className="text-xl text-white" />
+                    </Link>
 
                 </div>
 

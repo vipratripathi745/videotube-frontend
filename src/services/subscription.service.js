@@ -15,6 +15,7 @@ const subscriptionService = {
         );
 
         return response.data;
+        
     },
 
     getSubscribedChannels: async (subscriberId) => {
