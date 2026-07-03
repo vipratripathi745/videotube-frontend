@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import CommentList from "../components/comments/CommentList";
 import LikeButton from "../components/likes/LikeButton";
 import videoService from "../services/video.service";
+import SubscribeButton from "../components/subscription/SubscribeButton";
 
 
 function Watch() {
@@ -74,11 +75,9 @@ function Watch() {
                             </p>
                         </div>
 
-                        <button
-                            className="bg-red-600 hover:bg-red-700 px-5 py-2 rounded-full font-semibold"
-                        >
-                            Subscribe
-                        </button>
+                        <SubscribeButton
+                            channelId={video.owner?._id}
+                        />
 
                     </div>
 
