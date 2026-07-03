@@ -4,6 +4,7 @@ import {
     FiPlayCircle,
     FiThumbsUp,
     FiUser,
+    FiBarChart2,
 } from "react-icons/fi";
 
 function Sidebar() {
@@ -37,6 +38,14 @@ function Sidebar() {
                 >
                     <FiUser size={20} />
                     <span>Profile</span>
+                </Link>
+                
+                <Link
+                    to="/dashboard"
+                    className="flex items-center gap-3 p-3 rounded-lg hover:bg-zinc-800 transition"
+                >
+                    <FiBarChart2 size={20} />
+                    <span>Dashboard</span>
                 </Link>
 
             </nav>

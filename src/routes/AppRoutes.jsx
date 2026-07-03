@@ -6,6 +6,7 @@ import Register from "../pages/Register";
 import Watch from "../pages/Watch";
 import Upload from "../pages/Upload";
 import Profile from "../pages/Profile";
+import Dashboard from "../pages/Dashboard";
 
 function AppRoutes() {
     return (
@@ -16,6 +17,7 @@ function AppRoutes() {
             <Route path="/register" element={<Register />} />
             <Route path="/upload" element={<Upload />} />
             <Route path="/profile" element={<Profile />}/>
+            <Route path="/dashboard" element={<Dashboard />} />
         </Routes>
     );
 }
