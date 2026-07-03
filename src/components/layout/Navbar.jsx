@@ -64,6 +64,13 @@ function Navbar() {
                 {/* Right */}
                 <div className="flex items-center gap-4">
 
+                    <Link
+                        to="/upload"
+                        className="bg-red-600 hover:bg-red-700 px-4 py-2 rounded-lg text-white font-medium"
+                    >
+                        Upload
+                    </Link>
+
                     <img
                         src="https://via.placeholder.com/40"
                         alt="avatar"
