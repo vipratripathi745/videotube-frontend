@@ -16,6 +16,14 @@ const videoService = {
         return response.data;
     },
 
+    getUserVideos: async (userId) => {
+        const response = await api.get(
+            `/videos/user/${userId}`
+        );
+
+        return response.data;
+    },
+
     publishVideo: async (formData) => {
         const response = await api.post(
             "/videos/publish",

@@ -31,10 +31,13 @@ function Sidebar() {
                     <span>Liked Videos (Coming Soon)</span>
                 </div>
 
-                <div className="flex items-center gap-3 p-3 rounded-lg text-gray-500 cursor-not-allowed">
+                <Link
+                    to="/profile"
+                    className="flex items-center gap-3 p-3 rounded-lg hover:bg-zinc-800 transition"
+                >
                     <FiUser size={20} />
-                    <span>Profile (Coming Soon)</span>
-                </div>
+                    <span>Profile</span>
+                </Link>
 
             </nav>
         </aside>
