@@ -1,17 +1,28 @@
 import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import userService from "../services/user.service";
 import videoService from "../services/video.service";
 import VideoCard from "../components/video/VideoCard";
 
 function Profile() {
+    const { username } = useParams();
     const [user, setUser] = useState(null);
     const [videos, setVideos] = useState([]);
 
     useEffect(() => {
         const fetchProfile = async () => {
             try {
-                const userResponse =
-                    await userService.getCurrentUser();
+                let userResponse;
+
+                if (username) {
+                    userResponse =
+                        await userService.getChannelProfile(
+                            username
+                        );
+                } else {
+                    userResponse =
+                        await userService.getCurrentUser();
+                }
 
                 if (userResponse.success) {
                     setUser(userResponse.data);
@@ -31,7 +42,7 @@ function Profile() {
         };
 
         fetchProfile();
-    }, []);
+    }, [username]);
 
     if (!user) {
         return (

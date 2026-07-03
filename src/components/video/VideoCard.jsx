@@ -6,30 +6,51 @@ function VideoCard({ video }) {
     return (
         <div
             onClick={() => navigate(`/watch/${video._id}`)}
-            className="bg-zinc-900 rounded-xl overflow-hidden shadow-lg hover:scale-105 transition duration-300 cursor-pointer"
+            className="group cursor-pointer"
         >
-            {/* Thumbnail */}
-            <img
-                src={video.thumbnail}
-                alt={video.title}
-                className="w-full h-44 object-cover"
-            />
+            <div className="overflow-hidden rounded-xl">
 
-            {/* Video Info */}
-            <div className="p-4">
-                <h2 className="text-white font-semibold text-lg line-clamp-2">
-                    {video.title}
-                </h2>
+                <img
+                    src={video.thumbnail}
+                    alt={video.title}
+                    className="w-full aspect-video object-cover transition-transform duration-300 group-hover:scale-105"
+                />
 
-                <p className="text-gray-400 text-sm mt-1">
-                    {video.owner?.username || "Unknown Channel"}
-                </p>
-
-                <p className="text-gray-500 text-xs mt-2">
-                    {video.views} views •{" "}
-                    {new Date(video.createdAt).toLocaleDateString()}
-                </p>
             </div>
+
+            <div className="flex gap-3 mt-3">
+
+                <img
+                    src={
+                        video.owner?.avatar ||
+                        "https://via.placeholder.com/40"
+                    }
+                    alt="avatar"
+                    className="w-10 h-10 rounded-full"
+                />
+
+                <div>
+
+                    <h2 className="text-white font-semibold line-clamp-2">
+                        {video.title}
+                    </h2>
+
+                    <p className="text-gray-400 text-sm mt-1">
+                        {video.owner?.username ||
+                            "Unknown Channel"}
+                    </p>
+
+                    <p className="text-gray-500 text-xs mt-1">
+                        {video.views} views •{" "}
+                        {new Date(
+                            video.createdAt
+                        ).toLocaleDateString()}
+                    </p>
+
+                </div>
+
+            </div>
+
         </div>
     );
 }

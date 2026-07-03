@@ -7,6 +7,8 @@ import Watch from "../pages/Watch";
 import Upload from "../pages/Upload";
 import Profile from "../pages/Profile";
 import Dashboard from "../pages/Dashboard";
+import LikedVideos from "../pages/LikedVideos";
+import Subscriptions from "../pages/Subscriptions";
 
 function AppRoutes() {
     return (
@@ -18,6 +20,9 @@ function AppRoutes() {
             <Route path="/upload" element={<Upload />} />
             <Route path="/profile" element={<Profile />}/>
             <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/liked" element={<LikedVideos />} />
+            <Route path="/subscriptions" element={<Subscriptions />} />
+            <Route path="/profile" element={<Profile />} />
         </Routes>
     );
 }
