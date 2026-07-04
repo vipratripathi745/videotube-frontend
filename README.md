@@ -109,7 +109,7 @@ npm run dev
 ### Backend
 
 ```bash
-cd newbackend
+cd video-backend
 npm install
 npm run dev
 ```
