@@ -1,16 +1,153 @@
-# React + Vite
+# 🎬 VideoTube
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A full-stack YouTube-inspired video streaming platform built using the MERN Stack.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## 🚀 Live Demo
 
-## React Compiler
+🌐 Frontend: https://videotube-frontend-cyan.vercel.app
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+⚙️ Backend: https://video-backend-9rxp.onrender.com
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## ✨ Features
+
+- 🔐 JWT Authentication
+- 👤 User Registration & Login
+- 📤 Upload Videos
+- 🎥 Watch Videos
+- ❤️ Like / Unlike Videos
+- 💬 Comment System
+- 🔔 Subscribe / Unsubscribe
+- 📺 User Channels
+- 📂 Playlists
+- ⏰ Watch Later
+- 🕒 Watch History
+- 🔍 Search Videos
+- 📊 Creator Dashboard
+- ✏️ Edit Video Details
+- 🗑 Delete Videos
+- 🌍 Fully Responsive
+- ☁️ Cloudinary Media Storage
+
+---
+
+## 🛠 Tech Stack
+
+### Frontend
+
+- React.js
+- React Router
+- Axios
+- Tailwind CSS
+- React Hot Toast
+
+### Backend
+
+- Node.js
+- Express.js
+- MongoDB
+- Mongoose
+- JWT Authentication
+- Cloudinary
+- Multer
+
+### Deployment
+
+- Vercel
+- Render
+- MongoDB Atlas
+
+---
+
+## 📁 Folder Structure
+
+Frontend
+
+```
+src/
+ ├── components/
+ ├── pages/
+ ├── services/
+ ├── context/
+ ├── routes/
+ └── assets/
+```
+
+Backend
+
+```
+src/
+ ├── controllers/
+ ├── models/
+ ├── routes/
+ ├── middleware/
+ ├── utils/
+ └── db/
+```
+
+---
+
+## ⚙️ Installation
+
+### Clone
+
+```bash
+git clone https://github.com/vipratripathi745/videotube-frontend
+```
+
+### Frontend
+
+```bash
+cd videotube-frontend
+npm install
+npm run dev
+```
+
+### Backend
+
+```bash
+cd newbackend
+npm install
+npm run dev
+```
+
+---
+
+## 📸 Screenshots
+
+> Add screenshots here.
+
+- Home
+- Watch
+- Dashboard
+- Profile
+- Playlist
+- Channel
+
+---
+
+## 📌 Future Improvements
+
+- Notifications
+- Shorts
+- Video Recommendations
+- Trending Videos
+- Dark / Light Theme
+- Live Streaming
+- AI Video Search
+
+---
+
+## 👨‍💻 Author
+
+**Vipra Tripathi**
+
+GitHub:
+https://github.com/vipratripathi745
+
+---
+
+⭐ If you like this project, give it a star.
