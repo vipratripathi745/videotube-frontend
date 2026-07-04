@@ -6,6 +6,7 @@ import videoService from "../services/video.service";
 import SubscribeButton from "../components/subscription/SubscribeButton";
 import { Link } from "react-router-dom";
 import toast from "react-hot-toast";
+import SaveButton from "../components/watchLater/SaveButton";
 
 
 function Watch() {
@@ -132,9 +133,7 @@ function Watch() {
                                 Share
                             </button>
 
-                            <button className="bg-zinc-800 hover:bg-zinc-700 transition px-5 py-2 rounded-full font-medium">
-                                Save
-                            </button>
+                            <SaveButton videoId={video._id} />
 
                         </div>
 
