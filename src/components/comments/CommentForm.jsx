@@ -1,10 +1,21 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
+import { useAuth } from "../../context/AuthContext";
 
 function CommentForm({ onSubmit }) {
     const [content, setContent] = useState("");
+    const { user } = useAuth();
+    const navigate = useNavigate();
 
     const handleSubmit = (e) => {
         e.preventDefault();
+
+        if (!user) {
+            toast.error("Please login first");
+            navigate("/login");
+            return;
+        }
 
         if (!content.trim()) return;
 

@@ -1,12 +1,19 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
+import { useAuth } from "../../context/AuthContext";
 import subscriptionService from "../../services/subscription.service";
 
 function SubscribeButton({ channelId }) {
+    const navigate = useNavigate();
+    const { user } = useAuth();
+
     const [subscribed, setSubscribed] = useState(false);
     const [subscriberCount, setSubscriberCount] = useState(0);
 
     useEffect(() => {
         const fetchSubscribers = async () => {
+
             try {
                 const response =
                     await subscriptionService.getChannelSubscribers(
@@ -42,6 +49,12 @@ function SubscribeButton({ channelId }) {
     }, [channelId]);
 
     const handleSubscribe = async () => {
+        if (!user) {
+            toast.error("Please login first");
+            navigate("/login");
+            return;
+        }       
+        
         try {
             await subscriptionService.toggleSubscription(
                 channelId

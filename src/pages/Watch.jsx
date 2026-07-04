@@ -5,6 +5,8 @@ import LikeButton from "../components/likes/LikeButton";
 import videoService from "../services/video.service";
 import SubscribeButton from "../components/subscription/SubscribeButton";
 import { Link } from "react-router-dom";
+import toast from "react-hot-toast";
+
 
 function Watch() {
     const { videoId } = useParams();
@@ -55,6 +57,17 @@ function Watch() {
             </div>
         );
     }
+
+    const handleShare = async () => {
+        try {
+            await navigator.clipboard.writeText(window.location.href);
+
+            toast.success("Link copied to clipboard!");
+        } catch (error) {
+            toast.error("Failed to copy link");
+        }
+    };
+
 
     return (
         <div className="flex-1 bg-zinc-950 text-white min-h-screen">
@@ -112,7 +125,10 @@ function Watch() {
                                 initialLikes={video.likesCount}
                             />
 
-                            <button className="bg-zinc-800 hover:bg-zinc-700 transition px-5 py-2 rounded-full font-medium">
+                            <button
+                                className="bg-zinc-800 hover:bg-zinc-700 transition px-5 py-2 rounded-full font-medium"
+                                onClick={handleShare}
+                            >
                                 Share
                             </button>
 

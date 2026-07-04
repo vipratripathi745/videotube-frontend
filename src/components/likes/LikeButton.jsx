@@ -1,11 +1,20 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
+import { useAuth } from "../../context/AuthContext";
 import likeService from "../../services/like.service";
 
 function LikeButton({ videoId, initialLikes = 0 }) {
+    const navigate = useNavigate();
+    const { user } = useAuth();
+
     const [likes, setLikes] = useState(initialLikes);
     const [liked, setLiked] = useState(false);
 
+
     useEffect(() => {
+        if (!user) return;
+
         const fetchLikeStatus = async () => {
             try {
                 const result = await likeService.isVideoLiked(videoId);
@@ -18,9 +27,15 @@ function LikeButton({ videoId, initialLikes = 0 }) {
         };
 
         fetchLikeStatus();
-    }, [videoId]);
+    }, [videoId, user]);
 
     const handleLike = async () => {
+        if (!user) {
+            toast.error("Please login first");
+            navigate("/login");
+            return;
+        }       
+              
         try {
             await likeService.toggleVideoLike(videoId);
 
