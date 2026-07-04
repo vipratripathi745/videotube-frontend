@@ -3,6 +3,13 @@ import dashboardService from "../services/dashboard.service";
 import videoService from "../services/video.service";
 import toast from "react-hot-toast";
 import EditVideoModal from "../components/dashboard/EditVideoModal";
+import {
+    FiVideo,
+    FiEye,
+    FiHeart,
+    FiUsers,
+    FiUserPlus,
+} from "react-icons/fi";
 
 function Dashboard() {
     const [stats, setStats] = useState(null);
@@ -135,36 +142,46 @@ function Dashboard() {
                 Dashboard
             </h1>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
+            <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-5 gap-6 mb-10">
 
-                <div className="bg-zinc-900 p-6 rounded-xl">
-                    <h2 className="text-gray-400">
-                        Total Videos
-                    </h2>
-
-                    <p className="text-4xl font-bold mt-2">
+                <div className="bg-gradient-to-r from-red-600 to-red-500 rounded-2xl p-6 shadow-lg">
+                    <FiVideo size={32} className="mb-3" />
+                    <p className="text-red-100">Total Videos</p>
+                    <h2 className="text-4xl font-bold mt-2">
                         {stats.totalVideos}
-                    </p>
+                    </h2>
                 </div>
 
-                <div className="bg-zinc-900 p-6 rounded-xl">
-                    <h2 className="text-gray-400">
-                        Subscribers
+                <div className="bg-gradient-to-r from-blue-600 to-cyan-500 rounded-2xl p-6 shadow-lg">
+                    <FiEye size={32} className="mb-3" />
+                    <p className="text-blue-100">Total Views</p>
+                    <h2 className="text-4xl font-bold mt-2">
+                        {stats.totalViews}
                     </h2>
+                </div>
 
-                    <p className="text-4xl font-bold mt-2">
+                <div className="bg-gradient-to-r from-pink-600 to-rose-500 rounded-2xl p-6 shadow-lg">
+                    <FiHeart size={32} className="mb-3" />
+                    <p className="text-pink-100">Total Likes</p>
+                    <h2 className="text-4xl font-bold mt-2">
+                        {stats.totalLikes}
+                    </h2>
+                </div>
+
+                <div className="bg-gradient-to-r from-green-600 to-emerald-500 rounded-2xl p-6 shadow-lg">
+                    <FiUsers size={32} className="mb-3" />
+                    <p className="text-green-100">Subscribers</p>
+                    <h2 className="text-4xl font-bold mt-2">
                         {stats.totalSubscribers}
-                    </p>
+                    </h2>
                 </div>
 
-                <div className="bg-zinc-900 p-6 rounded-xl">
-                    <h2 className="text-gray-400">
-                        Subscribed To
-                    </h2>
-
-                    <p className="text-4xl font-bold mt-2">
+                <div className="bg-gradient-to-r from-purple-600 to-violet-500 rounded-2xl p-6 shadow-lg">
+                    <FiUserPlus size={32} className="mb-3" />
+                    <p className="text-purple-100">Subscribed To</p>
+                    <h2 className="text-4xl font-bold mt-2">
                         {stats.totalSubscribedTo}
-                    </p>
+                    </h2>
                 </div>
 
             </div>
@@ -175,7 +192,7 @@ function Dashboard() {
 
             <div className="overflow-x-auto">
 
-                <table className="w-full border-collapse">
+                <table className="w-full border-separate border-spacing-y-3">
 
                     <thead>
 
@@ -211,7 +228,7 @@ function Dashboard() {
 
                             <tr
                                 key={video._id}
-                                className="border-b border-zinc-800 hover:bg-zinc-900"
+                                className="bg-zinc-900 hover:bg-zinc-800 transition duration-300 rounded-xl shadow-md"
                             >
 
                                 <td className="p-4">
@@ -219,7 +236,8 @@ function Dashboard() {
                                     <img
                                         src={video.thumbnail}
                                         alt={video.title}
-                                        className="w-28 h-16 object-cover rounded"
+                                        className="w-36 h-20 object-cover rounded-xl shadow-lg hover:scale-105 transition"
+
                                     />
 
                                 </td>
@@ -232,20 +250,16 @@ function Dashboard() {
                                     {video.views}
                                 </td>
 
-
-
-
-
                                 <td className="p-4 text-center">
 
                                     <button
                                         onClick={() =>
                                             handleTogglePublish(video._id)
                                         }
-                                        className={`px-3 py-1 rounded font-semibold ${
+                                        className={`px-4 py-2 rounded-full font-semibold transition ${
                                             video.isPublished
-                                                ? "bg-green-600 hover:bg-green-700"
-                                                : "bg-yellow-600 hover:bg-yellow-700"
+                                                ? "bg-green-500 hover:bg-green-600"
+                                                : "bg-yellow-500 hover:bg-yellow-600"
                                         }`}
                                     >
                                         {video.isPublished
@@ -265,14 +279,14 @@ function Dashboard() {
                                         onClick={() =>
                                             setEditingVideo(video)
                                         }
-                                        className="bg-blue-600 hover:bg-blue-700 px-3 py-1 rounded mr-2"
+                                        className="bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-lg shadow transition"
                                     >
                                         Edit
                                     </button>
 
                                     <button
                                         onClick={() => handleDelete(video._id)}
-                                        className="bg-red-600 hover:bg-red-700 px-3 py-1 rounded"
+                                        className="bg-red-600 hover:bg-red-700 px-4 py-2 rounded-lg shadow transition"
                                     >
                                         Delete
                                     </button>

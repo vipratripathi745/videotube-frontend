@@ -13,6 +13,8 @@ import WatchLater from "../pages/WatchLater";
 import History from "../pages/History";
 import Playlists from "../pages/Playlists";
 import PlaylistDetails from "../pages/PlaylistDetails";
+import Channel from "../pages/Channel";
+
 
 function AppRoutes() {
     return (
@@ -34,6 +36,10 @@ function AppRoutes() {
                 path="/playlist/:playlistId"
                 element={<PlaylistDetails />}
             />
+            <Route
+                path="/channel/:username"
+                element={<Channel />}
+            />          
         </Routes>
     );
 }

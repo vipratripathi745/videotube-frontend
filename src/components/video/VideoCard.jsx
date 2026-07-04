@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 function VideoCard({ video }) {
     const navigate = useNavigate();
@@ -20,14 +20,19 @@ function VideoCard({ video }) {
 
             <div className="flex gap-3 mt-4">
 
-                <img
-                    src={
-                        video.owner?.avatar ||
-                        "https://via.placeholder.com/40"
-                    }
-                    alt="avatar"
-                    className="w-11 h-11 rounded-full object-cover"
-                />
+                <Link
+                    to={`/channel/${video.owner?.username}`}
+                    onClick={(e) => e.stopPropagation()}
+                >
+                    <img
+                        src={
+                            video.owner?.avatar ||
+                            "https://via.placeholder.com/40"
+                        }
+                        alt="avatar"
+                        className="w-11 h-11 rounded-full object-cover"
+                    />
+                </Link>
 
                 <div className="flex-1">
 
@@ -35,9 +40,13 @@ function VideoCard({ video }) {
                         {video.title}
                     </h2>
 
-                    <p className="text-gray-400 text-sm mt-2">
+                    <Link
+                        to={`/channel/${video.owner?.username}`}
+                        onClick={(e) => e.stopPropagation()}
+                        className="text-gray-400 text-sm mt-2 hover:text-white block"
+                    >
                         {video.owner?.username}
-                    </p>
+                    </Link>
 
                     <p className="text-gray-500 text-xs mt-1">
                         {video.views} views •{" "}

@@ -4,7 +4,7 @@ import CommentList from "../components/comments/CommentList";
 import LikeButton from "../components/likes/LikeButton";
 import videoService from "../services/video.service";
 import SubscribeButton from "../components/subscription/SubscribeButton";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 import SaveButton from "../components/watchLater/SaveButton";
 import historyService from "../services/history.service";
@@ -14,6 +14,7 @@ import PlaylistModal from "../components/playlist/PlaylistModal";
 
 function Watch() {
     const { videoId } = useParams();
+    const navigate = useNavigate();
     const { user } = useAuth();
 
     const [video, setVideo] = useState(null);
@@ -111,13 +112,21 @@ function Watch() {
                                     "https://via.placeholder.com/50"
                                 }
                                 alt="avatar"
-                                className="w-14 h-14 rounded-full object-cover border-2 border-zinc-700"
+                                onClick={() =>
+                                    navigate(`/channel/${video.owner?.username}`)
+                                }
+                                className="w-14 h-14 rounded-full object-cover border-2 border-zinc-700 cursor-pointer"
                             />
 
                             <div>
-                                <h2 className="text-lg font-semibold">
+                                <h2
+                                    onClick={() =>
+                                        navigate(`/channel/${video.owner?.username}`)
+                                    }
+                                    className="text-lg font-semibold cursor-pointer hover:text-red-500"
+                                >
                                     {video.owner?.username || "Unknown Channel"}
-                                </h2>
+                                </h2>                               
 
                                 <p className="text-gray-400 text-sm">
                                     0 Subscribers
@@ -246,7 +255,7 @@ function Watch() {
                     setShowPlaylistModal(false)
                 }
             />
-            
+
         </div>
     );
 }
