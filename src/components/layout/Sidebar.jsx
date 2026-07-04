@@ -4,6 +4,7 @@ import {
     FiPlayCircle,
     FiThumbsUp,
     FiClock,
+    FiFolder,
     FiFilm,
     FiUser,
     FiBarChart2,
@@ -60,6 +61,15 @@ function Sidebar() {
                 >
                     <FiFilm size={20} />
                     <span>History</span>
+                </NavLink>
+
+
+                <NavLink
+                    to="/playlists"
+                    className={linkClass}
+                >
+                    <FiFolder size={20} />
+                    <span>Playlists</span>
                 </NavLink>
 
                 <NavLink

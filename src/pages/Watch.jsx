@@ -9,6 +9,7 @@ import toast from "react-hot-toast";
 import SaveButton from "../components/watchLater/SaveButton";
 import historyService from "../services/history.service";
 import { useAuth } from "../context/AuthContext";
+import PlaylistModal from "../components/playlist/PlaylistModal";
 
 
 function Watch() {
@@ -17,6 +18,7 @@ function Watch() {
 
     const [video, setVideo] = useState(null);
     const [recommendedVideos, setRecommendedVideos] = useState([]);
+    const [showPlaylistModal, setShowPlaylistModal] = useState(false);
 
     useEffect(() => {
 
@@ -142,7 +144,22 @@ function Watch() {
                                 Share
                             </button>
 
-                            <SaveButton videoId={video._id} />
+                            <div className="flex gap-3">
+
+                                <SaveButton
+                                    videoId={video._id}
+                                />
+
+                                <button
+                                    onClick={() =>
+                                        setShowPlaylistModal(true)
+                                    }
+                                    className="bg-zinc-800 hover:bg-zinc-700 transition px-5 py-2 rounded-full font-medium"
+                                >
+                                    Add to Playlist
+                                </button>
+
+                            </div>
 
                         </div>
 
@@ -221,6 +238,15 @@ function Watch() {
                 </div>
 
             </div>
+
+            <PlaylistModal
+                videoId={video._id}
+                isOpen={showPlaylistModal}
+                onClose={() =>
+                    setShowPlaylistModal(false)
+                }
+            />
+            
         </div>
     );
 }

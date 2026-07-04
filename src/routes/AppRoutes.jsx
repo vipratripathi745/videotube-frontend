@@ -11,6 +11,8 @@ import LikedVideos from "../pages/LikedVideos";
 import Subscriptions from "../pages/Subscriptions";
 import WatchLater from "../pages/WatchLater";
 import History from "../pages/History";
+import Playlists from "../pages/Playlists";
+import PlaylistDetails from "../pages/PlaylistDetails";
 
 function AppRoutes() {
     return (
@@ -27,6 +29,11 @@ function AppRoutes() {
             <Route path="/profile" element={<Profile />} />
             <Route path="/watch-later" element={<WatchLater />} />
             <Route path="/history" element={<History />} />
+            <Route path="/playlists" element={<Playlists />} />
+            <Route
+                path="/playlist/:playlistId"
+                element={<PlaylistDetails />}
+            />
         </Routes>
     );
 }
