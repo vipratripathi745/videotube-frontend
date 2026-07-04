@@ -7,10 +7,13 @@ import SubscribeButton from "../components/subscription/SubscribeButton";
 import { Link } from "react-router-dom";
 import toast from "react-hot-toast";
 import SaveButton from "../components/watchLater/SaveButton";
+import historyService from "../services/history.service";
+import { useAuth } from "../context/AuthContext";
 
 
 function Watch() {
     const { videoId } = useParams();
+    const { user } = useAuth();
 
     const [video, setVideo] = useState(null);
     const [recommendedVideos, setRecommendedVideos] = useState([]);
@@ -28,7 +31,13 @@ function Watch() {
 
                 if (response.success) {
                     setVideo(response.data);
-
+                    if (user) {
+                        try {
+                            await historyService.addToHistory(videoId);
+                        } catch (error) {
+                            console.log(error);
+                        }
+                    }
                     const allVideos = await videoService.getAllVideos();
 
                     if (allVideos.success) {
@@ -46,7 +55,7 @@ function Watch() {
         };
 
         fetchVideo();
-    }, [videoId]);
+    }, [videoId , user]);
 
     if (!video) {
         return (

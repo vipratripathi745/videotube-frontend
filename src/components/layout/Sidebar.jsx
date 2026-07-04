@@ -3,6 +3,8 @@ import {
     FiHome,
     FiPlayCircle,
     FiThumbsUp,
+    FiClock,
+    FiFilm,
     FiUser,
     FiBarChart2,
 } from "react-icons/fi";
@@ -42,6 +44,22 @@ function Sidebar() {
                 >
                     <FiThumbsUp size={20} />
                     <span>Liked Videos</span>
+                </NavLink>
+
+                <NavLink
+                    to="/watch-later"
+                    className={linkClass}
+                >
+                    <FiClock size={20} />
+                    <span>Watch Later</span>
+                </NavLink>
+
+                <NavLink
+                    to="/history"
+                    className={linkClass}
+                >
+                    <FiFilm size={20} />
+                    <span>History</span>
                 </NavLink>
 
                 <NavLink

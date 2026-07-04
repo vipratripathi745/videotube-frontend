@@ -9,6 +9,8 @@ import Profile from "../pages/Profile";
 import Dashboard from "../pages/Dashboard";
 import LikedVideos from "../pages/LikedVideos";
 import Subscriptions from "../pages/Subscriptions";
+import WatchLater from "../pages/WatchLater";
+import History from "../pages/History";
 
 function AppRoutes() {
     return (
@@ -23,6 +25,8 @@ function AppRoutes() {
             <Route path="/liked" element={<LikedVideos />} />
             <Route path="/subscriptions" element={<Subscriptions />} />
             <Route path="/profile" element={<Profile />} />
+            <Route path="/watch-later" element={<WatchLater />} />
+            <Route path="/history" element={<History />} />
         </Routes>
     );
 }
